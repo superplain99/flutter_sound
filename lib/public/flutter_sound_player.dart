@@ -261,13 +261,11 @@ class FlutterSoundPlayer implements FlutterSoundPlayerCallback {
     _playerState = PlayerState.values[state];
     //await _stop(); // ??? Maybe
 
-    if (!_fromStream) {
-      if (_audioPlayerFinishedPlaying != null) {
-        // We don't stop the player if the user has a callback
-        _audioPlayerFinishedPlaying?.call();
-      } else {
-        await stopPlayer(); // ??? Maybe !!!!!!!!!!!
-      }
+    if (_audioPlayerFinishedPlaying != null) {
+      // We don't stop the player if the user has a callback
+      _audioPlayerFinishedPlaying?.call();
+    } else {
+      await stopPlayer(); // ??? Maybe !!!!!!!!!!!
     }
     //_cleanCompleters(); // We have problem when the record is finished and a resume is pending
 
